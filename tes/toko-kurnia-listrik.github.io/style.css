@@ -1,79 +1,501 @@
+/* --- Variables --- */
 :root {
-  --primary-color: #007BFF;
-  --secondary-color: #FF6F00;
-  --background-color: #FFFFFF;
-  --text-color: #333333;
-  --shadow-color: rgba(0,0,0,0.1);
-  --font-main: 'Poppins', sans-serif;
+  --primary-color: #2C3E50; /* Dark Blue */
+  --secondary-color: #1ABC9C; /* Turquoise */
+  --accent-color: #F39C12; /* Mustard Yellow */
+  --background-light: #ECF0F1; /* Light Gray */
+  --text-dark: #34495E; /* Dark Gray */
+  --text-light: #FFFFFF;
+  --shadow-subtle: rgba(0,0,0,0.08);
+  --shadow-medium: rgba(0,0,0,0.15);
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Lato', sans-serif;
 }
 
+/* --- Base Styles --- */
 body {
-  font-family: var(--font-main);
-  background-color: var(--background-color);
-  color: var(--text-color);
+  font-family: var(--font-body);
+  background-color: var(--background-light);
+  color: var(--text-dark);
   margin: 0;
   padding: 0;
+  line-height: 1.6;
+  scroll-behavior: smooth;
 }
 
-header {
-  position: sticky;
-  top: 0;
-  background: var(--primary-color);
-  color: white;
-  padding: 0.75rem 0;
-  box-shadow: 0 2px 10px var(--shadow-color);
-  z-index: 1000;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-nav a {
-  color: white;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
-nav a:hover {
-  color: var(--secondary-color);
+a:hover {
+  color: var(--accent-color);
 }
 
-.product-item, .service-item {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px var(--shadow-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+p {
+  margin-bottom: 1rem;
 }
 
-.product-item:hover, .service-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px var(--shadow-color);
+hr.divider {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 3rem auto;
+  width: 80%;
 }
 
-/* Hero */
-#hero {
-  background: url('images/hero-toko-listrik.jpg') no-repeat center center/cover;
-  height: 500px;
+.section-padding {
+    padding: 4rem 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--secondary-color);
+  color: var(--text-light);
+  box-shadow: 0 4px 10px rgba(0, 173, 181, 0.3); /* Shadow based on secondary color */
+}
+
+.btn-primary:hover {
+  background-color: #16A085; /* Slightly darker turquoise */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 173, 181, 0.4);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  transform: translateY(-2px);
+}
+
+.btn-small {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    border-radius: 20px;
+}
+
+/* --- Header & Navigation --- */
+.main-header {
+  position: sticky;
+  top: 0;
+  background: var(--primary-color);
+  color: var(--text-light);
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 15px var(--shadow-medium);
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+  height: 50px; /* Adjust as needed */
+  width: auto;
+  filter: brightness(0) invert(1); /* Makes logo white if it's dark */
+}
+
+.main-nav .nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main-nav .nav-item {
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.main-nav .nav-item:hover {
+  color: var(--accent-color);
+  background-color: rgba(255,255,255,0.1);
+}
+
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-toko-listrik.jpg') no-repeat center center/cover;
+  height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
-  text-shadow: 2px 3px 6px rgba(0,0,0,0.7);
+  color: var(--text-light);
+  text-align: center;
+  padding: 0 1.5rem;
 }
 
-#hero h2 {
+.hero-content h1 {
+  font-size: 3.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+/* --- Product Grid --- */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-item {
+  background: var(--text-light);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px var(--shadow-subtle);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px var(--shadow-medium);
+}
+
+.product-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--background-light);
+}
+
+.product-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary-color);
+}
+
+.product-info p {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+/* --- Service Grid --- */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.service-item {
+  background: var(--text-light);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px var(--shadow-subtle);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px var(--shadow-medium);
+}
+
+.service-icon {
   font-size: 3.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
 }
 
-#hero .btn-primary {
-  padding: 0.75rem 2rem;
-  background: var(--secondary-color);
-  border: none;
-  color: white;
-  font-weight: bold;
-  border-radius: 30px;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
+.service-item h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
 }
 
-#hero .btn-primary:hover {
-  opacity: 0.85;
+.service-item p {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+}
+
+/* --- About Section --- */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: justify;
+    font-size: 1.1rem;
+}
+
+.about-content strong {
+    color: var(--primary-color);
+}
+
+/* --- Contact Section --- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.contact-info h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.contact-info p {
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+}
+
+.contact-info p i {
+  color: var(--secondary-color);
+  margin-right: 10px;
+  font-size: 1.2rem;
+  width: 25px; /* Fixed width for alignment */
+}
+
+.contact-info a {
+    color: var(--text-dark); /* Default text color for links in contact info */
+}
+
+.contact-info a:hover {
+    color: var(--secondary-color);
+}
+
+.contact-map iframe {
+  border-radius: 12px;
+  box-shadow: 0 6px 15px var(--shadow-subtle);
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 2.5rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: var(--text-light);
+  font-size: 1.5rem;
+  margin: 0 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent-color);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-map {
+        order: -1; /* Map appears above contact info on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        position: absolute;
+        top: 100%; /* Position below header */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        box-shadow: 0 8px 15px var(--shadow-medium);
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        padding: 1rem 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .main-nav.active {
+        display: flex; /* Show when active */
+    }
+
+    .main-nav .nav-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-nav .nav-item {
+        padding: 0.8rem 1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block; /* Show hamburger menu */
+    }
+
+    .hero-section {
+        height: 450px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .product-grid, .service-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .section-padding {
+        padding: 3rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .hero-section {
+        height: 400px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .product-item img {
+        height: 180px;
+    }
+
+    .product-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .service-icon {
+        font-size: 3rem;
+    }
+
+    .service-item h3 {
+        font-size: 1.4rem;
+    }
+
+    .contact-info p {
+        font-size: 0.95rem;
+    }
 }
