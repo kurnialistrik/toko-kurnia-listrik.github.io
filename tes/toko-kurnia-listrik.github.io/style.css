@@ -1,0 +1,203 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: #0056b3;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: #f9c74f 3px solid;
+}
+
+header .logo {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header .tagline {
+    margin: 0;
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+/* Navigation */
+nav {
+    background: #333;
+    color: #fff;
+    padding: 0.5rem 0;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #f9c74f;
+}
+
+/* Hero Section */
+#hero {
+    background: url('https://via.placeholder.com/1500x500.png?text=Selamat+Datang') no-repeat center center/cover;
+    height: 400px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-shadow: 2px 2px 4px #000;
+}
+
+#hero h2 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+/* Sections */
+main section {
+    padding: 40px 0;
+    background: #fff;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #0056b3;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+/* Product & Service Grid */
+.product-grid, .service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: center;
+}
+
+.product-item, .service-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-item:hover, .service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.service-item i {
+    font-size: 3em;
+    color: #f9c74f;
+    margin-bottom: 15px;
+}
+
+/* Contact Section */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.contact-info i {
+    color: #0056b3;
+    margin-right: 10px;
+}
+
+.contact-info a {
+    color: #333;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-map iframe {
+    border-radius: 5px;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media(max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    header .logo {
+        font-size: 2em;
+    }
+
+    #hero h2 {
+        font-size: 2.2em;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
